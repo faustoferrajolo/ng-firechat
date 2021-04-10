@@ -40,7 +40,14 @@ export class ChatService {
                }
 
   login( sitio: string ) {
-    this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    if ( sitio === 'google'){
+      this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    }else{
+      if ( sitio === 'twitter'){
+        this.afAuth.signInWithPopup(new firebase.auth.TwitterAuthProvider());
+      }
+    }
+
   }
   logout() {
     this.usuario = {};
